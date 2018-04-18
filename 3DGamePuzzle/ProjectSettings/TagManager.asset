@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Maze
+  - Light1
+  - Light2
+  - Light3
+  - Light4
   layers:
   - Default
   - TransparentFX
