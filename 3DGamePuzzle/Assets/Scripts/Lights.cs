@@ -26,12 +26,12 @@ public class Lights : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && On == false && enter == true)
+        if (Input.GetKeyDown(KeyCode.E) && On == false && enter == true)
         {
             Spotlight.GetComponent<Light>().enabled = true;
             On = true;
         }
-        else if (Input.GetKeyDown(KeyCode.R) && On == true && enter == true)
+        else if (Input.GetKeyDown(KeyCode.E) && On == true && enter == true)
         {
             Spotlight.GetComponent<Light>().enabled = false;
             On = false;
@@ -39,9 +39,10 @@ public class Lights : MonoBehaviour {
     }
     void OnGUI()
     {
-        if (enter)
+        if (enter == true)
         {
-            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 150, 30), "Press 'E' to open the door");
+            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 150, 30), "Press 'E' to turn on the light");
+
         }
     }
     //Activate the Main function when player is near the door
