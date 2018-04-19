@@ -5,7 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - Maze
+<<<<<<< HEAD
   - Spooky
+=======
+  - Light1
+  - Light2
+  - Light3
+  - Light4
+>>>>>>> 407cbdc935d3e1ea3cfc4a656ca78c6424f7be2c
   layers:
   - Default
   - TransparentFX
