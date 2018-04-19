@@ -15,8 +15,10 @@ public class EnemyNavFollow : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log("foo");
         agent.destination = player.position;
-        Debug.Log("fjidsfuhdbafubesbfuhye");
 	}
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.name);
+    }
 }

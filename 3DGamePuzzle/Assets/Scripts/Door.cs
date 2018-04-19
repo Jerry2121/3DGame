@@ -59,10 +59,18 @@ public class Door : MonoBehaviour {
     //Activate the Main function when player is near the door
     void OnTriggerEnter(Collider collision)
     {
+        Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag == "Player")
         {
             enter = true;
         }
+        if (collision.gameObject.tag == "Spooky")
+        {
+            open = !open;
+            transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, openRot, Time.deltaTime * smooth);
+            Debug.Log("To Spooky");
+        }
+
     }
 
     //Deactivate the Main function when player is go away from door
@@ -73,4 +81,5 @@ public class Door : MonoBehaviour {
             enter = false;
         }
     }
+
 }
