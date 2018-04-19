@@ -14,6 +14,7 @@ public class chase : MonoBehaviour {
         agent = GetComponentInParent<NavMeshAgent>();
         agent.autoBraking = false;
         GotoNextPoint();
+        timer = 6;
     }
 	
 	void Update () 
