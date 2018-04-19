@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class pausemenu : MonoBehaviour {
     bool paused = false;
+    public GameObject Canvas;
     // Use this for initialization
     void Start()
     {
@@ -17,33 +18,34 @@ public class pausemenu : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Escape) && paused == false)
         {
             paused = true;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+            Canvas.GetComponent<Canvas>().enabled = true;
+            Cursor.visible = true;
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && paused == true)
         {
-            paused = false;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            Resume();
         }
-        if (paused)
+        /*if (paused)
         {
             Time.timeScale = 0;
-            GetComponent<Canvas>().enabled = true;
+            Canvas.GetComponent<Canvas>().enabled = true;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
         if (paused == false)
         {
             Time.timeScale = 1;
-            GetComponent<Canvas>().enabled = false;
+            Canvas.GetComponent<Canvas>().enabled = false;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-        }
+        }*/
     }
     public void Resume()
     {
-        GetComponent<Canvas>().enabled = false;
+        Debug.Log("foo");
+        Canvas.GetComponent<Canvas>().enabled = false;
         paused = false;
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
