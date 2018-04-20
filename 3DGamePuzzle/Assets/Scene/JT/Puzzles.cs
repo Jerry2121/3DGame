@@ -15,7 +15,7 @@ public class Puzzles : MonoBehaviour {
     {
         if (enter)
         {
-            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 150, 30), "Press 'E' to open the door");
+            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 150, 30), "Search");
         }
     }
 
