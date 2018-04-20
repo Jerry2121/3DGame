@@ -59,7 +59,6 @@ public class Door : MonoBehaviour {
     //Activate the Main function when player is near the door
     void OnTriggerEnter(Collider collision)
     {
-        Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag == "Player")
         {
             enter = true;
