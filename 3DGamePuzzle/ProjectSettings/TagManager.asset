@@ -9,6 +9,7 @@ TagManager:
   - Maze
   - Key
   - Test
+  - NunSearch
   layers:
   - Default
   - TransparentFX
