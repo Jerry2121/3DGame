@@ -28,6 +28,11 @@ public class Puzzles : MonoBehaviour {
     // Update is called once per frame
     void Update () {
        // TimerSlide.value = timer;
+       if (Input.GetKeyUp(KeyCode.E))
+        {
+            timer = 0;
+            SlideCanvas.GetComponent<Canvas>().enabled = false;
+        }
     }
     public void OnTriggerStay(Collider other)
     {
