@@ -26,12 +26,12 @@ public class Lights1 : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && On == false && enter == true)
+        if (Input.GetKeyDown(KeyCode.R) && On == false && enter == true || Input.GetKeyDown(KeyCode.Joystick1Button2) && On == false && enter == true)
         {
             Spotlight.GetComponent<Light>().enabled = true;
             On = true;
         }
-        else if (Input.GetKeyDown(KeyCode.R) && On == true && enter == true)
+        else if (Input.GetKeyDown(KeyCode.R) && On == true && enter == true || Input.GetKeyDown(KeyCode.Joystick1Button2) && On == true && enter == true)
         {
             Spotlight.GetComponent<Light>().enabled = false;
             On = false;

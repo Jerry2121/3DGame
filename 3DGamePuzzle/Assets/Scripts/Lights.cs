@@ -26,12 +26,12 @@ public class Lights : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && On == false && enter == true)
+        if (Input.GetKeyDown(KeyCode.E) && On == false && enter == true || Input.GetKeyDown(KeyCode.Joystick1Button2) && On == false && enter == true)
         {
             Spotlight.GetComponent<Light>().enabled = true;
             On = true;
         }
-        else if (Input.GetKeyDown(KeyCode.E) && On == true && enter == true)
+        else if (Input.GetKeyDown(KeyCode.E) && On == true && enter == true || Input.GetKeyDown(KeyCode.Joystick1Button2) && On == true && enter == true)
         {
             Spotlight.GetComponent<Light>().enabled = false;
             On = false;
@@ -41,7 +41,7 @@ public class Lights : MonoBehaviour {
     {
         if (enter == true)
         {
-            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 150, 30), "Press 'E' to toggle the light");
+            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 150, 30), "Press 'E' to toggle the light or 'X' on a controller");
 
         }
     }

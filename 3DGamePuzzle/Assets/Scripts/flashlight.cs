@@ -22,12 +22,12 @@ public class flashlight : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.F) && On == false)
+        if (Input.GetKeyDown(KeyCode.F) && On == false || Input.GetKeyDown(KeyCode.Joystick1Button1) && On == false)
         {
             Spotlight.GetComponent<Light>().enabled = true;
             On = true;
         }
-        else if (Input.GetKeyDown(KeyCode.F) && On == true)
+        else if (Input.GetKeyDown(KeyCode.F) && On == true || Input.GetKeyDown(KeyCode.Joystick1Button1) && On == true)
         {
             Spotlight.GetComponent<Light>().enabled = false;
             On = false;

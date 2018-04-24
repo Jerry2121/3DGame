@@ -23,8 +23,6 @@ public class Maze : MonoBehaviour {
         if (other.gameObject.tag == "Maze") {
 
             transform.position = new Vector3(100, -100, 100);
-            Debug.Log("fnhdbgfuhcbedwgfy");
-
         }
 
     }

@@ -42,7 +42,7 @@ public class Door : MonoBehaviour {
             transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, defaultRot, Time.deltaTime * smooth);
         }
 
-        if (Input.GetKeyDown("e") && enter)
+        if (Input.GetKeyDown(KeyCode.E) && enter || Input.GetKeyDown(KeyCode.Joystick1Button2) && enter)
         {
             open = !open;
         }
@@ -52,7 +52,7 @@ public class Door : MonoBehaviour {
     {
         if (enter)
         {
-            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 150, 30), "Press 'E' to open the door");
+            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 150, 30), "Press 'E' to open the door or 'X' on a controller");
         }
     }
 
@@ -67,7 +67,6 @@ public class Door : MonoBehaviour {
         {
             open = !open;
             transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, openRot, Time.deltaTime * smooth);
-            Debug.Log("To Spooky");
         }
 
     }
