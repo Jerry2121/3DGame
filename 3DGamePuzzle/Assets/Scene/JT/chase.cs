@@ -82,7 +82,7 @@ public class chase : MonoBehaviour {
             else
             {
                 Scarecanvas1.GetComponent<Canvas>().enabled = false;
-              //  TimeScare = 0;
+                TimeScare = 0;
             }
         }
     }

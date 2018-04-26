@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WinScript : MonoBehaviour {
 
@@ -11,6 +12,13 @@ public class WinScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (PlayerPrefs.GetInt("Puzzle1Complete") == 1 && PlayerPrefs.GetInt("Puzzle2Complete") == 1 && PlayerPrefs.GetInt("Puzzle3Complete") == 1 && collision.gameObject.tag == "Win")
+        {
+            SceneManager.LoadScene("Win");
+        }
+    }
 }

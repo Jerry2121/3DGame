@@ -115,7 +115,7 @@ public class Safe : MonoBehaviour {
             ZERO();
         }
         if (one == true && eight == true && four == true) {
-            Debug.Log("GG");
+            PlayerPrefs.SetInt("Puzzle3complete", 1);
         }
     }
 }
