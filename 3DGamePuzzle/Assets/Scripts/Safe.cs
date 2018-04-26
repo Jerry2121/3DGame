@@ -20,7 +20,6 @@ public class Safe : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E)) {
             Debug.Log("click");
         }
-
     }
 
     void ONE()
@@ -73,135 +72,50 @@ public class Safe : MonoBehaviour {
         zero = true;
         Debug.Log("0");
     }
-    void OnTriggerStay(Collider collision)
-    {
-        //Debug.Log(collision.gameObject);
-        if (collision.gameObject.name == "one" && Input.GetKeyDown(KeyCode.E))
-        {
-            ONE();
-        }
-        if (collision.gameObject.name == "two" && Input.GetKeyDown(KeyCode.E))
-        {
-            TWO();
-        }
-        if (collision.gameObject.name == "three" && Input.GetKeyDown(KeyCode.E))
-        {
-            THREE();
-        }
-        if (collision.gameObject.name == "four" && Input.GetKeyDown(KeyCode.E))
-        {
-            FOUR();
-        }
-        if (collision.gameObject.name == "five" && Input.GetKeyDown(KeyCode.E))
-        {
-            FIVE();
-        }
-        if (collision.gameObject.name == "six" && Input.GetKeyDown(KeyCode.E))
-        {
-            SIX();
-        }
-        if (collision.gameObject.name == "seven" && Input.GetKeyDown(KeyCode.E))
-        {
-            SEVEN();
-        }
-        if (collision.gameObject.name == "eight" && Input.GetKeyDown(KeyCode.E))
-        {
-            EIGHT();
-        }
-        if (collision.gameObject.name == "nine" && Input.GetKeyDown(KeyCode.E))
-        {
-            NINE();
-        }
-        if (collision.gameObject.name == "zero" && Input.GetKeyDown(KeyCode.E))
-        {
-            ZERO();
-        }
-    }
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.name == "one" && Input.GetKeyDown(KeyCode.E))
+        if (collision.gameObject.name == "one")
         {
             ONE();
         }
-        if (collision.gameObject.name == "two" && Input.GetKeyDown(KeyCode.E))
+        if (collision.gameObject.name == "two")
         {
             TWO();
         }
-        if (collision.gameObject.name == "three" && Input.GetKeyDown(KeyCode.E))
+        if (collision.gameObject.name == "three")
         {
             THREE();
         }
-        if (collision.gameObject.name == "four" && Input.GetKeyDown(KeyCode.E))
+        if (collision.gameObject.name == "four")
         {
             FOUR();
         }
-        if (collision.gameObject.name == "five" && Input.GetKeyDown(KeyCode.E))
+        if (collision.gameObject.name == "five")
         {
             FIVE();
         }
-        if (collision.gameObject.name == "six" && Input.GetKeyDown(KeyCode.E))
+        if (collision.gameObject.name == "six")
         {
             SIX();
         }
-        if (collision.gameObject.name == "seven" && Input.GetKeyDown(KeyCode.E))
+        if (collision.gameObject.name == "seven")
         {
             SEVEN();
         }
-        if (collision.gameObject.name == "eight" && Input.GetKeyDown(KeyCode.E))
+        if (collision.gameObject.name == "eight")
         {
             EIGHT();
         }
-        if (collision.gameObject.name == "nine" && Input.GetKeyDown(KeyCode.E))
+        if (collision.gameObject.name == "nine")
         {
             NINE();
         }
-        if (collision.gameObject.name == "zero" && Input.GetKeyDown(KeyCode.E))
+        if (collision.gameObject.name == "zero")
         {
             ZERO();
         }
-    }
-    void OnTriggerExit(Collider collision)
-    {
-        if (collision.gameObject.name == "one" && Input.GetKeyDown(KeyCode.E))
-        {
-            ONE();
-        }
-        if (collision.gameObject.name == "two" && Input.GetKeyDown(KeyCode.E))
-        {
-            TWO();
-        }
-        if (collision.gameObject.name == "three" && Input.GetKeyDown(KeyCode.E))
-        {
-            THREE();
-        }
-        if (collision.gameObject.name == "four" && Input.GetKeyDown(KeyCode.E))
-        {
-            FOUR();
-        }
-        if (collision.gameObject.name == "five" && Input.GetKeyDown(KeyCode.E))
-        {
-            FIVE();
-        }
-        if (collision.gameObject.name == "six" && Input.GetKeyDown(KeyCode.E))
-        {
-            SIX();
-        }
-        if (collision.gameObject.name == "seven" && Input.GetKeyDown(KeyCode.E))
-        {
-            SEVEN();
-        }
-        if (collision.gameObject.name == "eight" && Input.GetKeyDown(KeyCode.E))
-        {
-            EIGHT();
-        }
-        if (collision.gameObject.name == "nine" && Input.GetKeyDown(KeyCode.E))
-        {
-            NINE();
-        }
-        if (collision.gameObject.name == "zero" && Input.GetKeyDown(KeyCode.E))
-        {
-            ZERO();
+        if (one == true && eight == true && four == true) {
+            Debug.Log("GG");
         }
     }
-
 }
