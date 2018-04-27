@@ -7,6 +7,9 @@ public class chase : MonoBehaviour {
     private int destPoint = 0;
     public Transform player;
     public float timer;
+    public float TimeScare;
+    public GameObject Scarecanvas1;
+    public bool Scare;
 
     NavMeshAgent agent;
     void Start()
@@ -65,5 +68,22 @@ public class chase : MonoBehaviour {
         // Choose the next point in the array as the destination,
         // cycling to the start if necessary.
         destPoint = (destPoint + 1) % Waypoints.Length;
+    }
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Scare = true;
+            TimeScare += Time.deltaTime;
+            if (Scare && TimeScare <= 3)
+            {
+                Scarecanvas1.GetComponent<Canvas>().enabled = true;
+            }
+            else
+            {
+                Scarecanvas1.GetComponent<Canvas>().enabled = false;
+                TimeScare = 0;
+            }
+        }
     }
 }

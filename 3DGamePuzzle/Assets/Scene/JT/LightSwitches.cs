@@ -59,7 +59,7 @@ public class LightSwitches : MonoBehaviour {
                     {
                         if (LightSwitch4 == true)
                         {
-                            Debug.Log("GG");
+                            PlayerPrefs.SetInt("Puzzle2complete", 1);
                             puzzle = true;
                         }
                     }

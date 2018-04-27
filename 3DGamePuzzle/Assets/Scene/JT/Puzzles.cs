@@ -7,21 +7,34 @@ public class Puzzles : MonoBehaviour {
     public float timer;
     public Slider TimerSlide;
     public GameObject SlideCanvas;
+    public GameObject CarKeysIcon;
     private bool complete;
     private bool enter = false;
     public bool CarKeys;
+    private bool Nun = false;
+    private bool yes = false;
+    private float time;
+    private float time2;
     // Use this for initialization
     void Start () {
         SlideCanvas.GetComponent<Canvas>().enabled = false;
         complete = false;
-
-	}
+        CarKeysIcon.GetComponent<RawImage>().enabled = false;
+    }
 
     void OnGUI()
     {
         if (enter)
         {
-            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 150, 30), "Hold 'E' or hold 'X' on a controller to search.");
+            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 300, 30), "Hold 'E' or hold 'X' on a controller to search.");
+        }
+        if (Nun)
+        {
+            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 300, 30), "Nothing Was Found.");
+        }
+        if (yes)
+        {
+            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 300, 30), "You found CarKeys!");
         }
     }
 
@@ -33,13 +46,30 @@ public class Puzzles : MonoBehaviour {
             timer = 0;
             SlideCanvas.GetComponent<Canvas>().enabled = false;
         }
+        time += Time.deltaTime;
+        if (Nun && time <= 3)
+        {
+            Nun = false;
+        }
+        else
+        {
+            time = 0;
+        }
+        time2 += Time.deltaTime;
+        if (yes && time2 <= 3)
+        {
+            yes = false;
+        }
+        else
+        {
+            time2 = 0;
+        }
     }
     public void OnTriggerStay(Collider other)
     {
 
         if (Input.GetKey(KeyCode.E) && complete == false && CarKeys == false || Input.GetKey(KeyCode.Joystick1Button2) && complete == false && CarKeys == false)
         {
-            Debug.Log("foo");
             enter = false;
             SlideCanvas.GetComponent<Canvas>().enabled = true;
             timer += Time.deltaTime;
@@ -49,7 +79,7 @@ public class Puzzles : MonoBehaviour {
             TimerSlide.value = foo;
             if (timer >= 5)
             {
-                Debug.Log("Nothing Was Found.");
+                Nun = true;
                 timer = 0;
                 complete = true;
             }
@@ -71,7 +101,9 @@ public class Puzzles : MonoBehaviour {
             TimerSlide.value = foo;
             if (timer >= 5)
             {
-                Debug.Log("CarKeys Was found");
+                yes = true;
+                CarKeysIcon.GetComponent<RawImage>().enabled = true;
+                PlayerPrefs.SetInt("Puzzle1Complete", 1);
                 timer = 0;
                 complete = true;
             }
