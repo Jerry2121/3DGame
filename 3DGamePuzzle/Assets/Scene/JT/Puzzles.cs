@@ -27,7 +27,7 @@ public class Puzzles : MonoBehaviour {
         if (enter)
         {
             GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 300, 30), "Hold 'E' or hold 'X' on a controller to search.");
-             GameObject.Find("ObjectiveText").GetComponent<Text>().text = ("Objective: Search Drawers for any sort of tool that might help you escape.");
+            GameObject.Find("ObjectiveText").GetComponent<Text>().text = ("Objective: Search Drawers for any sort of tool that might help you escape.");
         }
         if (Nun)
         {
