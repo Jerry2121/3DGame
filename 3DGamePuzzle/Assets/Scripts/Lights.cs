@@ -41,7 +41,7 @@ public class Lights : MonoBehaviour {
     {
         if (enter == true)
         {
-            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 150, 30), "Press 'E' to toggle the light or 'X' on a controller");
+            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 300, 30), "Press 'E' to toggle the light or 'X' on a controller");
 
         }
     }

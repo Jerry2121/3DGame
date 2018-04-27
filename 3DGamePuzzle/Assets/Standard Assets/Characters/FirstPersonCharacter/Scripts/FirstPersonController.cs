@@ -42,7 +42,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
-
+        private bool isPaused = false;
         // Use this for initialization
         private void Start()
         {
@@ -71,13 +71,21 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_Jump = false;
 
             }
+            if (Time.timeScale == 0)
+            {
+                isPaused = true;
 
+            }
             // the jump state needs to read here to make sure it is not missed
-            if (!m_Jump)
+            if (!m_Jump && !isPaused)
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
 
+            if(Time.timeScale == 1)
+                {
+                    isPaused = false;
+                }
             if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
             {
                 m_MoveDir.y = 0f;

@@ -6,8 +6,10 @@ public class chase : MonoBehaviour {
     public Transform[] Waypoints;
     private int destPoint = 0;
     public Transform player;
+    public GameObject Test;
     public float timer;
     public float TimeScare;
+    public float TimeScareInt;
     public GameObject Scarecanvas1;
     public bool Scare;
 
@@ -43,6 +45,8 @@ public class chase : MonoBehaviour {
                     agent.destination = player.position;
                     direction.y = 0;
                     timer = 0;
+                    AudioSource Audio = Test.GetComponent<AudioSource>();
+                    Audio.Play();
                 }
                 else
                 {
@@ -69,21 +73,12 @@ public class chase : MonoBehaviour {
         // cycling to the start if necessary.
         destPoint = (destPoint + 1) % Waypoints.Length;
     }
-    public void OnTriggerEnter(Collider other)
+    void ScareFunction()
     {
-        if (other.gameObject.tag == "Player")
+        Scarecanvas1.GetComponent<Canvas>().enabled = true;
+        if (TimeScare >= 3)
         {
-            Scare = true;
-            TimeScare += Time.deltaTime;
-            if (Scare && TimeScare <= 3)
-            {
-                Scarecanvas1.GetComponent<Canvas>().enabled = true;
-            }
-            else
-            {
-                Scarecanvas1.GetComponent<Canvas>().enabled = false;
-                TimeScare = 0;
-            }
+            Scarecanvas1.GetComponent<Canvas>().enabled = false;
         }
     }
 }

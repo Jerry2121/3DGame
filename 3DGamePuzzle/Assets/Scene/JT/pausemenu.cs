@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class pausemenu : MonoBehaviour {
     bool paused = false;
     public GameObject Canvas;
+    public GameObject ResumeButton;
     // Use this for initialization
     void Start()
     {
@@ -15,15 +16,14 @@ public class pausemenu : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && paused == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && paused == false || Input.GetKey(KeyCode.Joystick1Button6) || Input.GetKey(KeyCode.Joystick1Button7))
         {
             paused = true;
             Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.None;
             Canvas.GetComponent<Canvas>().enabled = true;
-            Cursor.visible = true;
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(ResumeButton);
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && paused == true)
+        else if (Input.GetKeyDown(KeyCode.Escape) && paused == true || Input.GetKey(KeyCode.Joystick1Button6) || Input.GetKey(KeyCode.Joystick1Button7))
         {
             Resume();
         }
@@ -47,14 +47,11 @@ public class pausemenu : MonoBehaviour {
         Canvas.GetComponent<Canvas>().enabled = false;
         paused = false;
         Time.timeScale = 1;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
     }
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
     public void MainMenu()
     {
