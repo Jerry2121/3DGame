@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Maze : MonoBehaviour {
-
+    public GameObject HealthText;
     public GameObject Player;
     //public GameObject Go;
     public Vector3 startPos;
@@ -16,7 +18,7 @@ public class Maze : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-
+        HealthText.GetComponent<Text>().text = ("Lives: " + PlayerPrefs.GetInt("Health"));
     }
     public void OnTriggerEnter(Collider other)
     {
@@ -24,6 +26,9 @@ public class Maze : MonoBehaviour {
 
             transform.position = new Vector3(100, -100, 100);
         }
-
+        if (other.gameObject.tag == "End")
+        {
+            SceneManager.LoadScene("Petty");
+        }
     }
 }

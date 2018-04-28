@@ -14,11 +14,9 @@ MonoBehaviour:
   m_Bool_keys: []
   m_Int_keys:
   - pbHandleAlignment
-<<<<<<< HEAD
   - pbDefaultEditLevel
+  - pb_GIWorkflowMode
   - pbDefaultSelectionMode
-=======
->>>>>>> 4d3cfb299eaf4eff370bccf551a759f780dc6ba8
   m_Float_keys:
   - pbEditorScroll.x
   - pbEditorScroll.y
@@ -26,11 +24,7 @@ MonoBehaviour:
   m_Color_keys: []
   m_Material_keys: []
   m_Bool_values: 
-<<<<<<< HEAD
-  m_Int_values: 000000000100000000000000
-=======
-  m_Int_values: 00000000
->>>>>>> 4d3cfb299eaf4eff370bccf551a759f780dc6ba8
+  m_Int_values: 00000000000000000000000000000000
   m_Float_values:
   - 0
   - 0

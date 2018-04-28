@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 
 public class chase : MonoBehaviour {
@@ -10,6 +11,8 @@ public class chase : MonoBehaviour {
     public float timer;
     public float TimeScare;
     public float TimeScareInt;
+    public bool ScareAct;
+    public bool ScarTrig;
     public GameObject Scarecanvas1;
     public bool Scare;
 
@@ -24,12 +27,27 @@ public class chase : MonoBehaviour {
 	
 	void Update () 
 	{
+        TimeScareInt += Time.deltaTime;
+        TimeScare += Time.deltaTime;
         timer += Time.deltaTime;
         Vector3 tempforward = this.transform.forward;
         tempforward.y = 0;
         Vector3 direction = player.position - this.transform.position;
         direction.y = 0;
 		float angle = Vector3.Angle(direction,this.transform.forward);
+        if(PlayerPrefs.GetInt("Health") <= 0)
+        {
+            SceneManager.LoadScene("Loose");
+        }
+        if (TimeScareInt >= 2)
+        {
+            ScarTrig = false;
+        }
+        if (TimeScare >= 3 && TimeScareInt >= 2)
+        {
+            ScareAct = false;
+        }
+    
         if (!agent.pathPending && agent.remainingDistance < 0.5f)
         {
             GotoNextPoint();
@@ -45,8 +63,9 @@ public class chase : MonoBehaviour {
                     agent.destination = player.position;
                     direction.y = 0;
                     timer = 0;
-                    AudioSource Audio = Test.GetComponent<AudioSource>();
-                    Audio.Play();
+                    TimeScare = 0;
+                    TimeScareInt = 0;
+                    ScareFunction();
                 }
                 else
                 {
@@ -75,10 +94,13 @@ public class chase : MonoBehaviour {
     }
     void ScareFunction()
     {
-        Scarecanvas1.GetComponent<Canvas>().enabled = true;
-        if (TimeScare >= 3)
+        ScareAct = true;
+        if (ScareAct == true && ScarTrig == false)
         {
-            Scarecanvas1.GetComponent<Canvas>().enabled = false;
+            AudioSource Audio = Test.GetComponent<AudioSource>();
+            Audio.Play();
+            PlayerPrefs.SetInt("Health", PlayerPrefs.GetInt("Health") - 1);
+            ScarTrig = true;
         }
-    }
+     }
 }
