@@ -20,6 +20,11 @@ public class StartCanv : MonoBehaviour {
     public void PlayGame()
     {
         SceneManager.LoadScene("House");
+        PlayerPrefs.SetInt("Puzzle1complete", 0);
+        PlayerPrefs.SetInt("Puzzle2complete", 0);
+        PlayerPrefs.SetInt("Puzzle3complete", 0);
+        PlayerPrefs.SetInt("Health", 3);
+        Time.timeScale = 1;
     }
     public void QuitGame()
     {

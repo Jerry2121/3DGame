@@ -10,6 +10,7 @@ TagManager:
   - Key
   - Test
   - NunSearch
+  - End
   layers:
   - Default
   - TransparentFX

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class flashlight : MonoBehaviour {
     public GameObject Spotlight;
+    public GameObject Flashlight;
     public bool StartOn;
     public bool On;
 	// Use this for initialization
@@ -25,11 +26,15 @@ public class flashlight : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.F) && On == false || Input.GetKeyDown(KeyCode.Joystick1Button1) && On == false)
         {
             Spotlight.GetComponent<Light>().enabled = true;
+            AudioSource Audio = Flashlight.GetComponent<AudioSource>();
+            Audio.Play();
             On = true;
         }
         else if (Input.GetKeyDown(KeyCode.F) && On == true || Input.GetKeyDown(KeyCode.Joystick1Button1) && On == true)
         {
             Spotlight.GetComponent<Light>().enabled = false;
+            AudioSource Audio = Flashlight.GetComponent<AudioSource>();
+            Audio.Play();
             On = false;
         }
     }

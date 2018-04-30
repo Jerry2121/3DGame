@@ -4,15 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Puzzles : MonoBehaviour {
-    public float timer;
     public Slider TimerSlide;
     public GameObject SlideCanvas;
     public GameObject CarKeysIcon;
+    public GameObject ObjectiveText;
     private bool complete;
     private bool enter = false;
     public bool CarKeys;
     private bool Nun = false;
     private bool yes = false;
+    public float timer;
     private float time;
     private float time2;
     // Use this for initialization
@@ -27,20 +28,22 @@ public class Puzzles : MonoBehaviour {
         if (enter)
         {
             GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 300, 30), "Hold 'E' or hold 'X' on a controller to search.");
+            ObjectiveText.GetComponent<Text>().text = ("Objective: Search Drawers for any sort of tool that might help you escape.");
         }
         if (Nun)
         {
-            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 300, 30), "Nothing Was Found.");
+            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 300, 60), "Nothing Was Found.");
         }
         if (yes)
         {
-            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 300, 30), "You found CarKeys!");
+            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 300, 60), "You found CarKeys!");
+            ObjectiveText.GetComponent<Text>().text = ("Objective: Find the car. You might be able to use it to escape.");
         }
     }
 
     // Update is called once per frame
     void Update () {
-       // TimerSlide.value = timer;
+        // TimerSlide.value = timer;
        if (Input.GetKeyUp(KeyCode.E) || Input.GetKeyUp(KeyCode.Joystick1Button2))
         {
             timer = 0;
@@ -103,7 +106,9 @@ public class Puzzles : MonoBehaviour {
             {
                 yes = true;
                 CarKeysIcon.GetComponent<RawImage>().enabled = true;
-                PlayerPrefs.SetInt("Puzzle1Complete", 1);
+                AudioSource Audio = GetComponent<AudioSource>();
+                Audio.Play();
+                PlayerPrefs.SetInt("CarKeys", 1);
                 timer = 0;
                 complete = true;
             }

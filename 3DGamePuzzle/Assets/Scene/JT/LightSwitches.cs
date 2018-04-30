@@ -60,6 +60,8 @@ public class LightSwitches : MonoBehaviour {
                         if (LightSwitch4 == true)
                         {
                             PlayerPrefs.SetInt("Puzzle2complete", 1);
+                            AudioSource Audio = GetComponent<AudioSource>();
+                            Audio.Play();
                             puzzle = true;
                         }
                     }
