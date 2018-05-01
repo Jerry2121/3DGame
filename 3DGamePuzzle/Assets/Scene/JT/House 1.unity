@@ -88425,7 +88425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Spotlight: {fileID: 841937250}
-  Flashlight: {fileID: 0}
+  Flashlight: {fileID: 209192599}
   StartOn: 0
   On: 0
 --- !u!1 &241639652
@@ -88984,7 +88984,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 347287623}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7a462d9ea4cc984790ef310d5ac27e2, type: 3}
   m_Name: 
@@ -95154,6 +95154,7 @@ MonoBehaviour:
   ScarTrig: 0
   Scarecanvas1: {fileID: 0}
   Scare: 0
+  test: 0
 --- !u!1 &1016904666
 GameObject:
   m_ObjectHideFlags: 0
@@ -95439,7 +95440,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 572121594f9afb94ab8316613b0aa70c, type: 3}
@@ -106474,6 +106475,10 @@ MonoBehaviour:
     puzzle1: 1
     puzzle2: 1
     puzzle3: 1
+    Player: {fileID: 0}
+    playerPositionX: 0
+    playerPositionY: 0
+    playerPositionZ: 0
     lastSaveFile: 
     lastSaveTime: 0
     savedScene: 
@@ -107083,7 +107088,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1730280788}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2af7dce3cd800140b41e130c09ae109, type: 3}
   m_Name: 
@@ -107303,6 +107308,10 @@ Prefab:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8200000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2eb6b80e573706642bdfb3e978ec48bb, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
   m_IsPrefabParent: 0
