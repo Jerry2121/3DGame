@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -178,11 +179,18 @@ public class GameControl : MonoBehaviour
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(GameData));
             XmlReader reader = XmlReader.Create(fs);
             gameData = xmlSerializer.Deserialize(reader) as GameData;
-            
+
+
             fs.Close();
             Vector3 pos = new Vector3(gameData.playerPositionX, gameData.playerPositionY, gameData.playerPositionZ);
             transform.position = pos;
             PlayerPrefs.SetInt("Health", gameData.health);
+            PlayerPrefs.SetInt("Puzzle1complete", gameData.puzzle1);
+            PlayerPrefs.SetInt("Puzzle2complete", gameData.puzzle2);
+            PlayerPrefs.SetInt("Puzzle3complete", gameData.puzzle3);
+            PlayerPrefs.SetFloat("PlayerPosX", gameData.playerPositionZ);
+            PlayerPrefs.SetFloat("PlayerPosY", gameData.playerPositionY);   
+            PlayerPrefs.SetFloat("PlayerPosZ", gameData.playerPositionZ);
             // Loads the scene from which the game was saved
             SceneManager.LoadSceneAsync(gameData.savedScene, LoadSceneMode.Single);
         }
@@ -226,9 +234,9 @@ public class GameControl : MonoBehaviour
             fs = File.OpenWrite(fullSavePath);
         }
 
-        XmlSerializer serializer = new XmlSerializer(typeof(GameData));
-        TextWriter textWriter = new StreamWriter(fs);
-        serializer.Serialize(textWriter, gameData);
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Open(Application.persistentDataPath + "/PlayerInfo.dat", FileMode.OpenOrCreate);
+        bf.Serialize(file, gameData);
         fs.Close();
 
         Debug.Log("Game Saved to " + fullSavePath);
@@ -246,10 +254,10 @@ public class GameControl : MonoBehaviour
         gameData.puzzle1 = PlayerPrefs.GetInt("Puzzle1complete");
         gameData.puzzle2 = PlayerPrefs.GetInt("Puzzle2complete");
         gameData.puzzle3 = PlayerPrefs.GetInt("Puzzle3complete");
-        gameData.health = PlayerPrefs.GetInt("health");
-        gameData.playerPositionX = PlayerPrefs.GetInt("PlayerPosX");
-        gameData.playerPositionY = PlayerPrefs.GetInt("PlayerPosY");
-        gameData.playerPositionZ = PlayerPrefs.GetInt("PlayerPosZ");
+        gameData.health = PlayerPrefs.GetInt("Health");
+        gameData.playerPositionX = PlayerPrefs.GetFloat("PlayerPosX");
+        gameData.playerPositionY = PlayerPrefs.GetFloat("PlayerPosY");
+        gameData.playerPositionZ = PlayerPrefs.GetFloat("PlayerPosZ");
     }
 
     // For flag storing and getting
@@ -400,15 +408,15 @@ public class GameData
 
     public List<GameFlag> gameFlags;
 
-    public float health;
+    public int health;
 
     public string playerName;
 
-    public float puzzle1;
+    public int puzzle1;
 
-    public float puzzle2;
+    public int puzzle2;
 
-    public float puzzle3;
+    public int puzzle3;
     public GameObject Player;
 
     // Needs properties to access
@@ -435,14 +443,16 @@ public class GameData
     /// </summary>
     public GameData()
     {
-        playerPosition = Vector3.zero;
-        health = PlayerPrefs.GetInt("health");
+        //health = PlayerPrefs.GetInt("health");
         playerName = "Player1";
         savedScene = "";
         gameFlags = new List<GameFlag>();
-        puzzle1 = PlayerPrefs.GetInt("Puzzle1complete");
-        puzzle2 = PlayerPrefs.GetInt("Puzzle2complete");
-        puzzle3 = PlayerPrefs.GetInt("Puzzle3complete");
+        //puzzle1 = PlayerPrefs.GetInt("Puzzle1complete");
+        //puzzle2 = PlayerPrefs.GetInt("Puzzle2complete");
+        //puzzle3 = PlayerPrefs.GetInt("Puzzle3complete");
+        //playerPositionX = PlayerPrefs.GetFloat("PlayerPosX");
+        //playerPositionY = PlayerPrefs.GetFloat("PlayerPosY");
+        //playerPositionZ = PlayerPrefs.GetFloat("PlayerPosZ");
     }
 
     #endregion Public Constructors
@@ -450,41 +460,6 @@ public class GameData
     #region Public Properties
 
     // Can't serialize a vector so needs to be broken down into 3 properties
-    public float PlayerPositionX
-    {
-        get
-        {
-            return playerPosition.x;
-        }
-        set
-        {
-            playerPosition.x = value;
-        }
-    }
-
-    public float PlayerPositionY
-    {
-        get
-        {
-            return playerPosition.y;
-        }
-        set
-        {
-            playerPosition.y = value;
-        }
-    }
-
-    public float PlayerPositionZ
-    {
-        get
-        {
-            return playerPosition.z;
-        }
-        set
-        {
-            playerPosition.z = value;
-        }
-    }
 
     #endregion Public Properties
 }
