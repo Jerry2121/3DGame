@@ -8,10 +8,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class BasicSave : MonoBehaviour
 {
-
-    // Use this for initialization
-    int hp = 10;
-
     void Start()
     {
         //Load our data using the stored playerpref
@@ -21,27 +17,7 @@ public class BasicSave : MonoBehaviour
         PlayerPrefs.SetString("Save", "");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            Save("state1");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Save("state2");
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            Load("state1");
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad2))
-        {
-            Load("state2");
-        }
 
-    }
     public void Save(string state)
     {
 
@@ -50,10 +26,13 @@ public class BasicSave : MonoBehaviour
         FileStream file = File.Open(Application.persistentDataPath
             + "/" + state + gameObject.name + ".dat", FileMode.OpenOrCreate);
         BasicSaveObj myData = new BasicSaveObj();
-        myData.hp = hp;
-        myData.x = transform.position.x;
-        myData.y = transform.position.y;
-        myData.z = transform.position.z;
+        myData.x = PlayerPrefs.GetFloat("PlayerPosX");
+        myData.y = PlayerPrefs.GetFloat("PlayerPosY");
+        myData.z = PlayerPrefs.GetFloat("PlayerPosZ");
+        myData.health = PlayerPrefs.GetInt("Health");
+        myData.puzzle1 = PlayerPrefs.GetInt("Puzzle1complete");
+        myData.puzzle2 = PlayerPrefs.GetInt("Puzzle2complete");
+        myData.puzzle3 = PlayerPrefs.GetInt("Puzzle3complete");
         bf.Serialize(file, myData);
         file.Close();
     }
@@ -67,7 +46,15 @@ public class BasicSave : MonoBehaviour
             FileStream file = File.Open(Application.persistentDataPath +
             "/" + state + gameObject.name + ".dat", FileMode.Open);
             BasicSaveObj myData = (BasicSaveObj)bf.Deserialize(file);
-            hp = myData.hp;
+            PlayerPrefs.SetFloat("PlayerPosX", myData.x);
+            PlayerPrefs.SetFloat("PlayerPosY", myData.y);
+            PlayerPrefs.SetFloat("PlayerPosZ", myData.z);
+            PlayerPrefs.SetInt("Health", myData.health);
+            PlayerPrefs.SetInt("Puzzle1complete", myData.puzzle1);
+            PlayerPrefs.SetInt("Puzzle2complete", myData.puzzle2);
+            PlayerPrefs.SetInt("Puzzle3complete", myData.puzzle3);
+
+
             transform.position = new Vector3(myData.x, myData.y, myData.z);
             file.Close();
         }
@@ -81,8 +68,13 @@ public class BasicSave : MonoBehaviour
 [System.Serializable]
 public class BasicSaveObj
 {
-    public int hp;
+    public int health;
     public float x;
     public float y;
     public float z;
+    public int puzzle1;
+    public int puzzle2;
+    public int puzzle3;
+
+
 }

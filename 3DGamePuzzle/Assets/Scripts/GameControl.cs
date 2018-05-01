@@ -182,7 +182,6 @@ public class GameControl : MonoBehaviour
             fs.Close();
             Vector3 pos = new Vector3(gameData.playerPositionX, gameData.playerPositionY, gameData.playerPositionZ);
             transform.position = pos;
-            PlayerPrefs.SetInt("Health", gameData.health);
             // Loads the scene from which the game was saved
             SceneManager.LoadSceneAsync(gameData.savedScene, LoadSceneMode.Single);
         }
