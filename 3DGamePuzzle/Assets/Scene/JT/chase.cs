@@ -15,6 +15,7 @@ public class chase : MonoBehaviour {
     public bool ScarTrig;
     public GameObject Scarecanvas1;
     public bool Scare;
+    public int test;
 
     NavMeshAgent agent;
     void Start()

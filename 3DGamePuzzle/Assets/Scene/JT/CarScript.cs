@@ -53,7 +53,7 @@ public class CarScript : MonoBehaviour {
             if (timer >= 5)
             {
                 CarKeysIcon.GetComponent<RawImage>().enabled = false;
-                PlayerPrefs.SetInt("Puzzle1Complete", 1);
+                PlayerPrefs.SetInt("Puzzle1complete", 1);
                 timer = 0;
                 complete = true;
                 yes = true;

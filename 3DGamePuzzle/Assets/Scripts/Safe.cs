@@ -15,13 +15,6 @@ public class Safe : MonoBehaviour {
     public bool nine = false;
     public bool zero = false;
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E)) {
-            Debug.Log("click");
-        }
-    }
-
     void ONE()
     {
         one = true;
