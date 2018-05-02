@@ -8,6 +8,7 @@ public class CarScript : MonoBehaviour {
     public GameObject SlideCanvas;
     public GameObject CarKeysIcon;
     public GameObject ObjectiveText;
+    public GameObject Barrier;
     private bool complete;
     private bool enter = false;
     private bool No = false;
@@ -57,6 +58,7 @@ public class CarScript : MonoBehaviour {
                 timer = 0;
                 complete = true;
                 yes = true;
+                Barrier.GetComponent<BoxCollider>().enabled = false;
             }
         }
         else if (Input.GetKeyUp(KeyCode.E) && PlayerPrefs.GetInt("CarKeys") == 1 || complete == true && PlayerPrefs.GetInt("CarKeys") == 1 || Input.GetKeyUp(KeyCode.Joystick1Button2) && PlayerPrefs.GetInt("CarKeys") == 1)

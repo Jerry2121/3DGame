@@ -8,6 +8,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class BasicSave : MonoBehaviour
 {
+    public GameObject PauseMenu;
     void Start()
     {
         //Load our data using the stored playerpref
@@ -34,6 +35,8 @@ public class BasicSave : MonoBehaviour
         myData.puzzle2 = PlayerPrefs.GetInt("Puzzle2complete");
         myData.puzzle3 = PlayerPrefs.GetInt("Puzzle3complete");
         myData.CarKeys = PlayerPrefs.GetInt("CarKeys");
+        PauseMenu.GetComponent<Canvas>().enabled = false;
+        Time.timeScale = 1;
         bf.Serialize(file, myData);
         file.Close();
     }
@@ -55,6 +58,8 @@ public class BasicSave : MonoBehaviour
             PlayerPrefs.SetInt("Puzzle2complete", myData.puzzle2);
             PlayerPrefs.SetInt("Puzzle3complete", myData.puzzle3);
             PlayerPrefs.SetInt("CarKeys", myData.CarKeys);
+            PauseMenu.GetComponent<Canvas>().enabled = false;
+            Time.timeScale = 1;
 
 
             transform.position = new Vector3(myData.x, myData.y, myData.z);

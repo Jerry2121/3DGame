@@ -52,6 +52,10 @@ public class Puzzles : MonoBehaviour {
         {
             complete = true;
         }
+       if(PlayerPrefs.GetInt("CarKeys") == 0)
+        {
+            CarKeysIcon.GetComponent<RawImage>().enabled = false;
+        }
     }
     public void OnTriggerStay(Collider other)
     {
