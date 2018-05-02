@@ -43,6 +43,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
         private bool isPaused = false;
+        public GameObject Player;
         // Use this for initialization
         private void Start()
         {
@@ -92,6 +93,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
+            PlayerPrefs.SetFloat("PlayerPosX", Player.transform.position.x);
+            PlayerPrefs.SetFloat("PlayerPosY", Player.transform.position.y);
+            PlayerPrefs.SetFloat("PlayerPosZ", Player.transform.position.z);
         }
 
 

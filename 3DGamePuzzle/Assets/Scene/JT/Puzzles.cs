@@ -43,29 +43,18 @@ public class Puzzles : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        // TimerSlide.value = timer;
        if (Input.GetKeyUp(KeyCode.E) || Input.GetKeyUp(KeyCode.Joystick1Button2))
         {
             timer = 0;
             SlideCanvas.GetComponent<Canvas>().enabled = false;
         }
-        time += Time.deltaTime;
-        if (Nun && time <= 3)
+       if (PlayerPrefs.GetInt("CarKeys") == 1)
         {
-            Nun = false;
+            complete = true;
         }
-        else
+       if(PlayerPrefs.GetInt("CarKeys") == 0)
         {
-            time = 0;
-        }
-        time2 += Time.deltaTime;
-        if (yes && time2 <= 3)
-        {
-            yes = false;
-        }
-        else
-        {
-            time2 = 0;
+            CarKeysIcon.GetComponent<RawImage>().enabled = false;
         }
     }
     public void OnTriggerStay(Collider other)
@@ -123,18 +112,34 @@ public class Puzzles : MonoBehaviour {
     //Activate the Main function when player is near the door
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && complete == false)
         {
             enter = true;
+        }
+        if(enter && timer >= 5 && !CarKeys)
+        {
+            Nun = true;
+        }
+        if (enter && timer >= 5 && CarKeys)
+        {
+           yes = true;
         }
     }
 
     //Deactivate the Main function when player is go away from door
     void OnTriggerExit(Collider collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && complete == true)
         {
             enter = false;
+        }
+        if (!enter && timer <= 5 && !CarKeys)
+        {
+            Nun = false;
+        }
+        if (!enter && timer <= 5 && CarKeys)
+        {
+            yes = false;
         }
     }
 }

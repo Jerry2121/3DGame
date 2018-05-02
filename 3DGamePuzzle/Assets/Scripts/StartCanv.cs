@@ -24,6 +24,7 @@ public class StartCanv : MonoBehaviour {
         PlayerPrefs.SetInt("Puzzle2complete", 0);
         PlayerPrefs.SetInt("Puzzle3complete", 0);
         PlayerPrefs.SetInt("Health", 3);
+        PlayerPrefs.SetInt("CarKeys", 0);
         Time.timeScale = 1;
     }
     public void QuitGame()

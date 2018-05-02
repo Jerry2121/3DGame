@@ -18,47 +18,38 @@ public class Safe : MonoBehaviour {
     void ONE()
     {
         one = true;
-        Debug.Log("1");
     }
     void TWO()
     {
         two = true;
-        Debug.Log("2");
     }
     void THREE()
     {
         three = true;
-        Debug.Log("3");
     }
     void FOUR()
     {
         four = true;
-        Debug.Log("4");
     }
     void FIVE()
     {
         five = true;
-        Debug.Log("5");
     }
     void SIX()
     {
         six = true;
-        Debug.Log("6");
     }
     void SEVEN()
     {
         seven = true;
-        Debug.Log("7");
     }
     void EIGHT()
     {
         eight = true;
-        Debug.Log("8");
     }
     void NINE()
     {
         nine = true;
-        Debug.Log("9");
     }
     void ZERO()
     {
