@@ -43,7 +43,6 @@ public class Puzzles : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        // TimerSlide.value = timer;
        if (Input.GetKeyUp(KeyCode.E) || Input.GetKeyUp(KeyCode.Joystick1Button2))
         {
             timer = 0;
@@ -52,10 +51,6 @@ public class Puzzles : MonoBehaviour {
        if (PlayerPrefs.GetInt("CarKeys") == 1)
         {
             complete = true;
-        }
-       if (PlayerPrefs.GetInt("CarKeys") == 0)
-        {
-            complete = false;
         }
     }
     public void OnTriggerStay(Collider other)

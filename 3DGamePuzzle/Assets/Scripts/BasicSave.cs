@@ -33,6 +33,7 @@ public class BasicSave : MonoBehaviour
         myData.puzzle1 = PlayerPrefs.GetInt("Puzzle1complete");
         myData.puzzle2 = PlayerPrefs.GetInt("Puzzle2complete");
         myData.puzzle3 = PlayerPrefs.GetInt("Puzzle3complete");
+        myData.CarKeys = PlayerPrefs.GetInt("CarKeys");
         bf.Serialize(file, myData);
         file.Close();
     }
@@ -53,6 +54,7 @@ public class BasicSave : MonoBehaviour
             PlayerPrefs.SetInt("Puzzle1complete", myData.puzzle1);
             PlayerPrefs.SetInt("Puzzle2complete", myData.puzzle2);
             PlayerPrefs.SetInt("Puzzle3complete", myData.puzzle3);
+            PlayerPrefs.SetInt("CarKeys", myData.CarKeys);
 
 
             transform.position = new Vector3(myData.x, myData.y, myData.z);
@@ -75,6 +77,7 @@ public class BasicSaveObj
     public int puzzle1;
     public int puzzle2;
     public int puzzle3;
+    public int CarKeys;
 
 
 }
