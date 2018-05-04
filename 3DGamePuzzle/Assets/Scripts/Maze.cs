@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Maze : MonoBehaviour {
     public GameObject HealthText;
     public GameObject Player;
+    public GameObject ObjectiveText;
     //public GameObject Go;
     public Vector3 startPos;
 
@@ -25,6 +26,7 @@ public class Maze : MonoBehaviour {
         if (other.gameObject.tag == "Maze") {
 
             transform.position = new Vector3(100, -100, 100);
+            ObjectiveText.GetComponent<Text>().text = ("Objective: What could possibly be down here? And whats with that bright light at the end?");
         }
         if (other.gameObject.tag == "End")
         {
