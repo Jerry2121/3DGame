@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class Safe : MonoBehaviour {
@@ -14,6 +15,17 @@ public class Safe : MonoBehaviour {
     public bool eight = false;
     public bool nine = false;
     public bool zero = false;
+    public GameObject Player;
+    public GameObject ObjectiveText;
+    public float timer;
+    public bool complete;
+    public bool yes;
+
+
+    private void Start()
+    {
+        complete = false;
+    }
 
     void ONE()
     {
@@ -55,6 +67,17 @@ public class Safe : MonoBehaviour {
     {
         zero = true;
         Debug.Log("0");
+    }
+    public void Update()
+    {
+        if (one == true && eight == true && four == true)
+        {
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            timer = 0;
+        }
     }
     void OnTriggerEnter(Collider collision)
     {
@@ -100,6 +123,14 @@ public class Safe : MonoBehaviour {
         }
         if (one == true && eight == true && four == true) {
             PlayerPrefs.SetInt("Puzzle3complete", 1);
+            ObjectiveText.GetComponent<Text>().text = ("Objective: You found a piece of paper with a riddle on it. The riddle says. The colors of 50 states and the odd one out.");
+            timer += Time.deltaTime;
+            if (timer <= 2.009 && !complete)
+            {
+                AudioSource Audio = Player.GetComponent<AudioSource>();
+                Audio.Play();
+                complete = true;
+            }
         }
     }
 }

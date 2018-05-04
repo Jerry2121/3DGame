@@ -14,12 +14,12 @@ public class RotateThis : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (zMove == true && Input.GetKey(KeyCode.RightArrow))
+        if (zMove == true && Input.GetKey(KeyCode.RightArrow) || zMove == true && Input.GetAxis("Dial") > 0)
         {
             transform.Rotate(0, 0, zRotate);
         }
-        if (zMove == true && Input.GetKey(KeyCode.LeftArrow))
-        {
+        if (zMove == true && Input.GetKey(KeyCode.LeftArrow) || zMove == true && Input.GetAxis("Dial") < 0)
+        {   
             transform.Rotate(0, 0, -zRotate);
         }
 

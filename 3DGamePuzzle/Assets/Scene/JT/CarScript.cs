@@ -57,7 +57,7 @@ public class CarScript : MonoBehaviour {
                 PlayerPrefs.SetInt("Puzzle1complete", 1);
                 timer = 0;
                 complete = true;
-                yes = true;
+                ObjectiveText.GetComponent<Text>().text = ("Objective: You found a piece of paper with a number on it. The numbers are 1234. What do they go to?");
                 Barrier.GetComponent<BoxCollider>().enabled = false;
             }
         }
