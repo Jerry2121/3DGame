@@ -14,6 +14,14 @@ public class Safe : MonoBehaviour {
     public bool eight = false;
     public bool nine = false;
     public bool zero = false;
+    public GameObject Player;
+    public float timer;
+    public bool complete;
+
+    private void Start()
+    {
+        complete = false;
+    }
 
     void ONE()
     {
@@ -55,6 +63,17 @@ public class Safe : MonoBehaviour {
     {
         zero = true;
         Debug.Log("0");
+    }
+    public void Update()
+    {
+        if (one == true && eight == true && four == true)
+        {
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            timer = 0;
+        }
     }
     void OnTriggerEnter(Collider collision)
     {
@@ -100,6 +119,13 @@ public class Safe : MonoBehaviour {
         }
         if (one == true && eight == true && four == true) {
             PlayerPrefs.SetInt("Puzzle3complete", 1);
+            timer += Time.deltaTime;
+            if (timer <= 2.009 && !complete)
+            {
+                AudioSource Audio = Player.GetComponent<AudioSource>();
+                Audio.Play();
+                complete = true;
+            }
         }
     }
 }

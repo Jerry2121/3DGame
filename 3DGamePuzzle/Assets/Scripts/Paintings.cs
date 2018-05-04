@@ -12,9 +12,9 @@ public class Paintings : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.E) && enter == true)
+        if (Input.GetKeyDown(KeyCode.E) && enter == true || Input.GetKeyDown(KeyCode.Joystick1Button2) && enter == true)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Joystick1Button2))
             {
                 GetComponent<Rigidbody>().useGravity = true;
                 GetComponent<Rigidbody>().mass = 10.0f;

@@ -228,7 +228,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4888426048126194}
-  - component: {fileID: 114950161766695648}
   m_Layer: 0
   m_Name: Puzzle4
   m_TagString: Untagged
@@ -5570,6 +5569,9 @@ MonoBehaviour:
   eight: 0
   nine: 0
   zero: 0
+  Player: {fileID: 0}
+  timer: 0
+  complete: 0
 --- !u!114 &114863070776409170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8036,14 +8038,3 @@ MonoBehaviour:
   - x: 31
     y: 28
   m_selectedTriangles: 1e0000001c0000001d0000001e0000001f0000001c000000
---- !u!114 &114950161766695648
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1530534660475084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
