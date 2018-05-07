@@ -723,7 +723,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &170572679
 Transform:
   m_ObjectHideFlags: 0
@@ -2625,7 +2625,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh15488
+  m_Name: pb_Mesh68882
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -4269,7 +4269,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh15326
+  m_Name: pb_Mesh68914
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -9129,9 +9129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6164f2cc393d64a4c84f6997ac16f1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  area: 15
-  timeSmooth: 3
+  speed: 3
+  area: 2
+  timeSmooth: 67
 --- !u!143 &1682812174
 CharacterController:
   m_ObjectHideFlags: 0
